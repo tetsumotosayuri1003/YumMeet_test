@@ -10,7 +10,11 @@ services:
     ports:
       - 5432:5432
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: DevDockerfile # 開発用のDockerfileにはパーミッションエラー対策がある
+      args:
+        USERNAME: ${USERNAME} # パーミッションエラー対策にユーザー名の環境変数を設定
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     tty: true
     stdin_open: true

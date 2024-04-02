@@ -73,3 +73,18 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 CMD ["./bin/rails", "server"]
+
+# Rubyのベースイメージを指定
+FROM ruby:3.2.2
+
+# 作業ディレクトリを設定
+WORKDIR /app
+
+# GemfileとGemfile.lockをコンテナにコピー
+COPY Gemfile Gemfile.lock ./
+
+# Bundlerでgemsをインストール
+RUN bundle install
+
+# アプリケーションのファイルをコンテナにコピー
+COPY . .

@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        'fitting-orange': '#fdba74', // ここにカスタムカラーの値を設定
+      },
     },
   },
   plugins: [

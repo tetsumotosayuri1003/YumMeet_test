@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="mx-auto max-w-md">
+    <h1 class="text-3xl font-bold text-center mb-8">ユーザー登録</h1>
+    <%= form_with model: @user, class: "space-y-4" do |f| %>
+      <div>
+        <%= f.label :last_name, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :last_name, class: "form-input mt-1 block w-full rounded-md border-gray-300" %>
+      </div>
+      <div>
+        <%= f.label :first_name, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :first_name, class: "form-input mt-1 block w-full rounded-md border-gray-300" %>
+      </div>
+      <div>
+        <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.email_field :email, class: "form-input mt-1 block w-full rounded-md border-gray-300" %>
+      </div>
+      <div>
+        <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.password_field :password, class: "form-input mt-1 block w-full rounded-md border-gray-300" %>
+      </div>
+      <div>
+        <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.password_field :password_confirmation, class: "form-input mt-1 block w-full rounded-md border-gray-300" %>
+      </div>
+      <div class="flex items-center justify-between">
+        <%= f.submit "登録", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+      </div>
+    <% end %>
+    <div class='text-center mt-4'>
+      <%= link_to 'ログインページへ', login_path, class: "text-blue-500 hover:text-blue-700" %>
+    </div>
+  </div>
+</div>

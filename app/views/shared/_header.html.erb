@@ -9,8 +9,15 @@
       <span class='navbar-toggler-icon'></span>
       </button>
     </nav>
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center flex items-center"> <!-- ここに追加 -->
-    </nav>
+    <!-- ナビゲーションの間に追加 -->
+    <div class="md:ml-auto flex flex-wrap items-center text-base justify-center flex items-center mx-4">
+      <%= link_to "#" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+        </svg>
+      <% end %>
+    </div>
+    <!-- ログアウトボタン -->
     <%= link_to logout_path, class: 'inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0', data: { turbo_method: :delete } do %>
       ログアウト
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">

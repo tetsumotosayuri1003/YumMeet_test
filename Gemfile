@@ -72,3 +72,7 @@ end
 gem "tailwindcss-rails", "~> 2.3"
 
 gem 'sorcery'
+
+gem 'draper'
+
+gem 'carrierwave', '2.2.2'

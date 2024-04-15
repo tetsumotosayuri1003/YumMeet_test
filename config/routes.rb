@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get 'terms_of_use', to: 'static_pages#terms_of_use'
 
   resources :users, only: %i[new create]
-  # boardsのルーティング
-  resources :boards, only: [:index, :new, :create] # 今後、新規投稿や投稿の作成も扱いたいなら、:newと:createも追加
+  resources :boards, only: [:index, :new, :create]
+  resource :profile, only: %i[show edit update]
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'

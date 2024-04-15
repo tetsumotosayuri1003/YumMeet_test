@@ -19,7 +19,9 @@
     <% end %>
     <%= render 'layouts/flash_message' %>
     <%= yield %>
-    <%= render 'shared/footer' %>
+    <% if (controller_name == 'static_pages' && action_name == 'top' && !logged_in?) || (controller_name == 'boards' && action_name == 'index' && logged_in?) %>
+      <%= render 'shared/footer' %>
+    <% end %>
     <% if logged_in? %>
       <%= render 'shared/bottom_navbar' %>
     <% end %>

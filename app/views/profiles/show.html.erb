@@ -1,0 +1,60 @@
+<div class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
+            <div class="col-span-4 sm:col-span-3">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <div class="flex flex-col items-center">
+                        <%= image_tag current_user.avatar_url, class: 'rounded-full w-12 h-12 object-cover' %></img>
+                        <h1 class="text-xl font-bold"><%= current_user.decorate.full_name %></h1>
+                        <div class="mt-6 flex flex-wrap gap-4 justify-center">
+                            <%= link_to "プロフィール編集", edit_profile_path, class: "bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-4 sm:col-span-9">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <h2 class="text-xl font-bold mb-4">投稿一覧</h2>
+                    <div class="container pt-3">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- 掲示板一覧 -->
+    <div class="lg:col-span-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <!-- データの繰り返し処理 -->
+        <% (0..4).each do |i| %>
+        <div class="mb-3">
+          <div id="board-id-<%= i %>" class="card">
+            <img class="card-img-top" src="/assets/board_placeholder.png" width="300" height="200"/>
+            <div class="card-body">
+              <div class="flex items-center justify-between">
+                <h4 class="card-title">
+                  <a href="#" class="text-blue-500">タイトル<%= i %></a>
+                </h4>
+                <div class="flex items-center space-x-2">
+                  <a href="#" id="button-edit-<%= i %>" class="text-gray-500 hover:text-blue-500">
+                    <i class="bi bi-pencil-fill"></i>
+                  </a>
+                  <a href="#" id="button-delete-<%= i %>" data-confirm="" class="text-gray-500 hover:text-red-500">
+                    <i class="bi bi-trash-fill"></i>
+                  </a>
+                </div>
+              </div>
+              <ul class="list-inline">
+                <li><i class="bi bi-person"></i> 原田 優衣</li>
+                <li><i class="bi bi-calendar"></i> 2019/12/26 17:00</li>
+              </ul>
+              <p class="card-text">本文<%= i %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

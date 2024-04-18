@@ -4,7 +4,9 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
+    "daisyui": "^4.10.2",
     "esbuild": "^0.20.2",
+    "jquery": "^3.7.1",
     "sass": "^1.72.0"
   },
   "scripts": {

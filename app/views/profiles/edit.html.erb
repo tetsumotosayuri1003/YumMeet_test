@@ -1,4 +1,5 @@
 <div class="container">
+<div class="container mx-auto flex px-5 py-24 md:flex-row flex-col justify-center items-center">
   <div class="mx-auto max-w-md">
     <h1 class="text-xl font-bold text-center">プロフィール編集</h1>
     <%= form_with model: @user, url: profile_path, method: :put, class: "space-y-4" do |f| %>
@@ -23,4 +24,5 @@
       <%= f.submit "プロフィール更新", class: "flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
     <% end %>
   </div>
+</div>
 </div>

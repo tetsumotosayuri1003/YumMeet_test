@@ -8,4 +8,12 @@ module ApplicationHelper
     else "bg-gray-500"
     end
   end
+
+  def display_rating_star(rating)
+    rating = rating.to_i
+    stars = ''
+    rating.times { stars += '★' }
+    (5-rating).times { stars += '☆' }
+    stars
+  end
 end

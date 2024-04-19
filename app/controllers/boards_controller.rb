@@ -1,6 +1,8 @@
 class BoardsController < ApplicationController
+  before_action :require_login, only: %i[index new create]
+
   def index
-    @boards = Board.includes(:user)
+    @boards = Board.includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -10,7 +12,7 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.new(board_params)
-    @board.user = current_user  # 現在のユーザーを投稿者として設定
+    @board.user = current_user
     if @board.save
       redirect_to boards_path, success: "投稿しました"
     else

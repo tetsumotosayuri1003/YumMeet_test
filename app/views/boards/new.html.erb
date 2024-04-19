@@ -3,66 +3,39 @@
     <div class="container">
       <div class="mx-auto max-w-md">
         <%= form_with(model: @board, local: true, html: {class: "new_board"}) do |form| %>
-          <div class="mb-4">
-            <%= form.label :spot_name, "スポット名　＊必須", class: "block text-gray-700 text-sm font-bold mb-2" %>
-            <%= form.text_field :spot_name, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
-          </div>
+        <%= render 'shared/error_messages', object: form.object %>
+          <%= form.fields_for :spot_attributes do |spot_fields| %>
+            <div class="mb-4">
+              <%= spot_fields.label :name, "スポット名　＊必須", class: "block text-gray-700 text-sm font-bold mb-2" %>
+              <%= spot_fields.text_field :name, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+            </div>
+          <% end %>
           <div class="mb-4">
             <%= form.label :rating_star, "総合点　＊必須", class: "block text-gray-700 text-sm font-bold mb-2" %>
             <div class="flex items-center">
               <fieldset class="rating_star">
-              <input type="radio" id="star5" name="rating_star" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-              <input type="radio" id="star4half" name="rating_star" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-              <input type="radio" id="star4" name="rating_star" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-              <input type="radio" id="star3half" name="rating_star" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-              <input type="radio" id="star3" name="rating_star" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-              <input type="radio" id="star2half" name="rating_star" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-              <input type="radio" id="star2" name="rating_star" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-              <input type="radio" id="star1half" name="rating_star" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-              <input type="radio" id="star1" name="rating_star" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-              <input type="radio" id="starhalf" name="rating_star" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                <input type="radio" id="star5" name="board[rating_star]" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                <input type="radio" id="star4half" name="board[rating_star]" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                <input type="radio" id="star4" name="board[rating_star]" value="4" /><label class="full" for="star4" title="Awesome - 4 stars"></label>
+                <input type="radio" id="star3half" name="board[rating_star]" value="3.5" /><label class="half" for="star3half" title="Pretty good - 3.5 stars"></label>
+                <input type="radio" id="star3" name="board[rating_star]" value="3" /><label class="full" for="star3" title="Awesome - 3 stars"></label>
+                <input type="radio" id="star2half" name="board[rating_star]" value="2.5" /><label class="half" for="star2half" title="Pretty good - 2.5 stars"></label>
+                <input type="radio" id="star2" name="board[rating_star]" value="2" /><label class="full" for="star2" title="Awesome - 2 stars"></label>
+                <input type="radio" id="star1half" name="board[rating_star]" value="1.5" /><label class="half" for="star1half" title="Pretty good - 1.5 stars"></label>
+                <input type="radio" id="star1" name="board[rating_star]" value="1" /><label class="full" for="star1" title="Awesome - 1 stars"></label>
+                <input type="radio" id="starhalf" name="board[rating_star]" value="0.5" /><label class="half" for="starhalf" title="Pretty good - 0.5 stars"></label>
               </fieldset>
             </div>
           </div>
           <div class="mb-4">
             <%= form.label :tag_ids, "評価ポイント　複数選択可　＊必須", class: "block text-gray-700 text-sm font-bold mb-2" %>
-            <div class="mt-2">
-              <div class="flex items-center mb-2">
-                <%= check_box_tag 'board[tag_ids][]', 'A', false, { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
-                <span class="ml-4 text-gray-700">子連れ多い</span>
-              </div>
-              <div class="flex items-center mb-2">
-                <%= check_box_tag 'board[tag_ids][]', 'B', false, { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
-                <span class="ml-4 text-gray-700">清潔感がある</span>
-              </div>
-              <div class="flex items-center mb-2">
-                <%= check_box_tag 'board[tag_ids][]', 'C', false, { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
-                <span class="ml-4 text-gray-700">トイレが近い</span>
-              </div>
-              <div class="flex items-center mb-2">
-                <%= check_box_tag 'board[tag_ids][]', 'D', false, { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
-                <span class="ml-4 text-gray-700">キッズメニューあり</span>
-              </div>
-              <div class="flex items-center mb-2">
-                <%= check_box_tag 'board[tag_ids][]', 'E', false, { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
-                <span class="ml-4 text-gray-700">個室がある</span>
-              </div>
-              <div class="flex items-center mb-2">
-                <%= check_box_tag 'board[tag_ids][]', 'F', false, { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
-                <span class="ml-4 text-gray-700">お座敷がある</span>
-              </div>
-              <div class="flex items-center mb-2">
-                <%= check_box_tag 'board[tag_ids][]', 'G', false, { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
-                <span class="ml-4 text-gray-700">離乳食可</span>
-              </div>
-              <div class="flex items-center mb-2">
-                <%= check_box_tag 'board[tag_ids][]', 'H', false, { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
-                <span class="ml-4 text-gray-700">ベビーカー可（お店が広い）</span>
-              </div>
-              <div class="flex items-center mb-2">
-                <%= check_box_tag 'board[tag_ids][]', 'other', false, { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
-                <span class="ml-4 text-gray-700">その他</span>
-              </div>
+              <div class="mt-2">
+              <% Tag.all.each do |tag| %>
+                <div class="flex items-center mb-2">
+                  <%= check_box_tag 'board[tag_ids][]', tag.id, false, { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
+                  <span class="ml-4 text-gray-700"><%= tag.name %></span>
+                </div>
+              <% end %>
             </div>
           </div>
           <div class="mb-4">

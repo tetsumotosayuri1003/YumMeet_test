@@ -9,16 +9,5 @@ class Board < ApplicationRecord
 
   validates :tag_ids, presence: true
 
-  enum rating_star: {
-    '5': 5,
-    '4 and a half': 4.5,
-    '4': 4,
-    '3 and a half': 3.5,
-    '3': 3,
-    '2 and a half': 2.5,
-    '2': 2,
-    '1 and a half': 1.5,
-    '1': 1,
-    'half': 0.5
-  }
+  validates :rating_star, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5, message: "は1から5の間で指定してください" }
 end

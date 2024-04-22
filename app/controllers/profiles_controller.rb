@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: %i[edit update]
+  before_action :set_user, only: %i[edit update show]
 
   def edit; end
 
@@ -12,7 +12,9 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @user_boards = @user.boards.includes(:user).order(created_at: :desc)
+  end
 
   private
 

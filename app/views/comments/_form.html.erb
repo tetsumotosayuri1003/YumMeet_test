@@ -1,0 +1,9 @@
+<div class="flex mb-3 justify-center" id="comment-form">
+  <div class="w-2/3">
+    <%= form_with model: comment, url: board_comments_path(board) do |f| %>
+      <%= f.label :content, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= f.text_area :content, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-3", row: "4", placeholder: Comment.human_attribute_name(:body) %>
+      <%= f.submit "コメントする", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    <% end %>
+  </div>
+</div>

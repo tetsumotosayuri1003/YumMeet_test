@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
+  before_action :require_login, only: %i[show]
 
   def new
     @user = User.new
@@ -13,6 +14,11 @@ class UsersController < ApplicationController
       flash.now[:alert] = '登録に失敗しました'
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @user = User.find_by!(name: params[:name])
+    @boards = @user.boards.order(created_at: :desc)
   end
 
   private

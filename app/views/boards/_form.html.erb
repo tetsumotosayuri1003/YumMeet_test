@@ -1,0 +1,42 @@
+<%= form_with(model: @board, local: true, html: {class: "new_board"}) do |form| %>
+  <%= form.fields_for :spot do |spot_fields| %>
+    <div class="mb-4">
+      <%= spot_fields.label :name, "スポット名　＊必須", class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= spot_fields.text_field :name, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+    </div>
+  <% end %>
+  <div class="mb-4">
+    <%= form.label :rating_star, "総合点　＊必須", class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <div class="flex items-center">
+      <fieldset class="rating_star">
+        <input type="radio" id="star5" name="board[rating_star]" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+        <input type="radio" id="star4" name="board[rating_star]" value="4" /><label class="full" for="star4" title="Awesome - 4 stars"></label>
+        <input type="radio" id="star3" name="board[rating_star]" value="3" /><label class="full" for="star3" title="Awesome - 3 stars"></label>
+        <input type="radio" id="star2" name="board[rating_star]" value="2" /><label class="full" for="star2" title="Awesome - 2 stars"></label>
+        <input type="radio" id="star1" name="board[rating_star]" value="1" /><label class="full" for="star1" title="Awesome - 1 stars"></label>
+      </fieldset>
+    </div>
+  </div>
+  <div class="mb-4">
+    <%= form.label :tag_ids, "評価ポイント　複数選択可　＊必須", class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <div class="mt-2">
+      <% Tag.all.each do |tag| %>
+        <div class="flex items-center mb-2">
+          <%= check_box_tag 'board[tag_ids][]', tag.id, @board.tags.include?(tag), { class: 'form-checkbox h-4 w-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600' } %>
+          <span class="ml-4 text-gray-700"><%= tag.name %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="mb-4">
+    <%= form.label :board_image, "写真", class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.file_field :board_image, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out", accept: 'image/*' %>
+  </div>
+  <div class="mb-4">
+    <%= form.label :comment, "コメント", class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.text_area :comment, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out", rows: 6 %>
+  </div>
+  <div class="flex items-center justify-between">
+    <%= form.submit "投稿", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+<% end %>

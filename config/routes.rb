@@ -5,12 +5,15 @@ Rails.application.routes.draw do
 
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'terms_of_use', to: 'static_pages#terms_of_use'
-  get '/users/:username', to: 'users#show', as: 'user'
 
   resources :users, only: %i[new create show]
   resources :boards, only: %i[index new create show edit update destroy] do
     resources :comments, only: %i[create edit destroy], shallow: true
+    collection do
+      get :favorites
+    end
   end
+  resources :favorites, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
 
   get 'login', to: 'user_sessions#new'

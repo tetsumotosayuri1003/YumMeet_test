@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_19_160407) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_143808) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_160407) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "board_id", null: false
+    t.string "favorite_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_favorites_on_board_id"
+    t.index ["user_id", "board_id", "favorite_type"], name: "index_favorites_on_user_id_and_board_id_and_favorite_type", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "spots", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -66,7 +77,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_160407) do
     t.string "first_name"
     t.string "last_name"
     t.string "avatar"
+    t.string "username"
+    t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "board_tag_maps", "boards"
@@ -75,4 +90,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_160407) do
   add_foreign_key "boards", "users"
   add_foreign_key "comments", "boards"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "boards"
+  add_foreign_key "favorites", "users"
 end

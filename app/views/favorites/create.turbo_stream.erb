@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "favorite-button-for-board-#{@board.id}" do %>
+  <%= render 'boards/unfavorite', board: @board %>
+<% end %>

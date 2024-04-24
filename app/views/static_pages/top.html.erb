@@ -7,22 +7,20 @@
       <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">YumMeetで
         <br class="hidden lg:inline-block">小さなお子様連れでも安心
         <br class="hidden lg:inline-block">家族みんなで楽しめる
-        <br class="hidden lg:inline-block">レストランやカフェの情報を手に入れよう！
+        <br class="hidden lg:inline-block">飲食店の情報を手に入れよう！
       </h1>
       <div class="flex justify-center">
         <%= link_to(login_path, class: "inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg") do %>
-        早速ログインする
+        早速ログイン
         <% end %>
-        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">試してみる</button>
+        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">投稿を見る</button>
       </div>
     </div>
   </div>
   <div class="container px-5 py-24 mx-auto">
     <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
       <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-        </svg>
+        <%= image_tag('top_mother.png', class: "object-cover object-center w-full h-full") %>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-gray-900 text-lg title-font font-medium mb-2">小さな子供を連れての食事の悩みって沢山ある！</h2>
@@ -39,19 +37,12 @@
         <li class="leading-relaxed text-base">何より誰かに作ってもらう食事は美味しい！</li>
       </div>
       <div class="sm:w-32 sm:order-none order-first sm:h-32 h-20 w-20 sm:ml-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-          <circle cx="6" cy="6" r="3"></circle>
-          <circle cx="6" cy="18" r="3"></circle>
-          <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-        </svg>
+        <%= image_tag('top_food.png', class: "object-cover object-center w-full h-full") %>
       </div>
     </div>
     <div class="flex items-center lg:w-3/5 mx-auto pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
       <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
+        <%= image_tag('top_share.png', class: "object-cover object-center w-full h-full") %>
       </div>
       <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
         <h2 class="text-gray-900 text-lg title-font font-medium mb-2">YumMeetではリアルな声が聴ける！！</h2>
@@ -62,7 +53,7 @@
     </div>
     <div class="flex justify-center">
       <%= link_to(login_path, class: "inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg") do %>
-        早速ログインする
+        早速ログイン
       <% end %>
     </div>
   </div>

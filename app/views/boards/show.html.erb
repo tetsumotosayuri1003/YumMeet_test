@@ -17,7 +17,7 @@
                       </div>
                       <div class="w-3/4 pl-4 flex items-center justify-between">
                         <ul class="flex space-x-2">
-                          <%= link_to "#" do %>
+                          <%= link_to user_path(@board.user) do %>
                             <li class="flex items-center">
                               <%= image_tag @board.user.avatar_url, class: 'rounded-full w-12 h-12 object-cover' %>
                               <span class="ml-2 mt-1"><%= @board.user.decorate.full_name %></span>
@@ -54,9 +54,11 @@
                       </div>
                       <div class="px-6 py-4 mb-auto">
                         <% if @board.tags.any? %>
-                          <ul class="list-inline">
+                          <ul class="flex flex-wrap">
                             <% @board.tags.each do |tag| %>
-                              <li><%= tag.name %></li>
+                              <li>
+                                <%= link_to tag.name, "#", class: "inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2" %>
+                              </li>
                             <% end %>
                           </ul>
                         <% end %>

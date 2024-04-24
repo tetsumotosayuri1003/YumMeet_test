@@ -33,13 +33,17 @@
               </svg>
             <% end %>
           </div>
-          <% end %>
+          <% else %>
+            <%= render 'favorite_buttons', { board: board } %>
+        <% end %>
       </div>
-      <% if board.tags.any? %>
-        <div class="px-6 py-4 mb-auto">
-          <ul class="list-inline">
+      <div class="px-6 py-4 mb-auto">
+        <% if board.tags.any? %>
+          <ul class="flex flex-wrap">
             <% board.tags.each do |tag| %>
-              <li><%= tag.name %></li>
+              <li>
+                <%= link_to tag.name, "#", class: "inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2" %>
+              </li>
             <% end %>
           </ul>
         </div>

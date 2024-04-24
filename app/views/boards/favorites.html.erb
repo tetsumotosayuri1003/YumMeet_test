@@ -1,0 +1,19 @@
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col justify-center items-center">
+    <div class="container">
+      <div class="mx-auto max-w-md">
+      <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <% if @favorite_boards.present? %>
+            <%= render @favorite_boards %>
+          <% else %>
+            <p><%= t('.no_result') %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>

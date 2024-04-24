@@ -50,6 +50,10 @@ class BoardsController < ApplicationController
     redirect_to boards_path, success: "削除しました"
   end
 
+  def favorites
+    @favorite_boards = current_user.favorite_boards.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def board_params

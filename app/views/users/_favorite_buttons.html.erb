@@ -1,0 +1,7 @@
+<div class='flex justify-end'>
+  <% if current_user.favorite?(board) %>
+    <%= render 'unfavorite', { board: board } %>
+  <% else %>
+    <%= render 'favorite', { board: board } %>
+  <% end %>
+</div>

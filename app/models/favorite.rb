@@ -4,3 +4,4 @@ class Favorite < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: :board_id }
 end
+

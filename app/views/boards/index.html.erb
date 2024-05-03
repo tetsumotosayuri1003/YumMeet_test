@@ -22,16 +22,12 @@
                             検索
                         </button>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row">
-                                <% if @boards.present? %>
-                                    <%= render @boards %>
-                                <% else %>
-                                    <div class="mb-3">レビューがありません</div>
-                                <% end %>
-                            </div>
-                        </div>
+                    <div class="grid sm:grid-cols-2 gap-4 my-4">
+                        <% if @boards.present? %>
+                            <%= render @boards %>
+                        <% else %>
+                            <div class="mb-3">レビューがありません</div>
+                        <% end %>
                     </div>
                 </div>
             </div>

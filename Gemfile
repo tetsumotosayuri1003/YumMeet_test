@@ -78,3 +78,5 @@ gem 'draper'
 gem 'carrierwave', '2.2.2'
 
 gem 'friendly_id', '~> 5.5.0'
+
+gem 'ransack'

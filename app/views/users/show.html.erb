@@ -1,35 +1,25 @@
-<section class="text-gray-600 body-font">
-  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col justify-center items-center">
-    <div class="container">
-      <div class="bg-gray-100">
-        <div class="container mx-auto py-8">
-          <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
-            <div class="col-span-4 sm:col-span-3">
-              <div class="bg-white shadow rounded-lg p-6">
-                <div class="flex flex-col items-center">
-                  <%= image_tag @user.avatar_url, class: 'rounded-full w-12 h-12 object-cover' %></img>
-                  <h1 class="text-xl font-bold"><%= @user.decorate.full_name %></h1>
-                </div>
-              </div>
-            </div>
-            <div class="col-span-4 sm:col-span-9">
-              <div class="bg-white shadow rounded-lg p-6">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="row">
-                      <% if @user.boards.present? %>
-                        <%= render @user.boards %>
-                          <% else %>
-                        <div class="mb-3">レビューがありません</div>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+<div class="bg-gray-100">
+  <div class="container mx-auto py-8">
+    <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
+      <div class="col-span-4 sm:col-span-3">
+        <div class="bg-white shadow rounded-lg p-6">
+          <div class="flex flex-col items-center">
+            <%= image_tag @user.avatar_url, class: 'rounded-full w-12 h-12 object-cover' %></img>
+            <h1 class="text-xl font-bold"><%= @user.decorate.full_name %></h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-4 sm:col-span-9">
+        <div class="bg-white shadow rounded-lg p-6">
+          <div class="grid sm:grid-cols-2 gap-4 my-4">
+            <% if @user.boards.present? %>
+              <%= render @user.boards %>
+            <% else %>
+              <div class="mb-3">レビューがありません</div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>

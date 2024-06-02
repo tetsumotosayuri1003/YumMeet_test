@@ -1,6 +1,6 @@
 <tr id="comment-<%= comment.id %>">
   <td class="w-15">
-    <%= image_tag current_user.avatar_url, class: 'rounded-full w-12 h-12 object-cover' %>
+    <%= image_tag comment.user.avatar_url, class: 'rounded-full w-12 h-12 object-cover' %>
   </td>
   <td>
     <h3 class="text-sm"><%= comment.user.decorate.full_name %></h3>

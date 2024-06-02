@@ -1,18 +1,12 @@
 <section class="text-gray-600 body-font">
   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col justify-center items-center">
     <div class="container">
-      <div class="mx-auto max-w-md">
-      <div class="row">
-      <div class="col-12">
-        <div class="row">
-          <% if @favorite_boards.present? %>
-            <%= render @favorite_boards %>
-          <% else %>
-            <p><%= t('.no_result') %></p>
-          <% end %>
-        </div>
-      </div>
-    </div>
+      <div class="grid sm:grid-cols-3 gap-4 my-4">
+        <% if @favorite_boards.present? %>
+          <%= render @favorite_boards %>
+        <% else %>
+          <div class="mb-3">いいねがありません</div>
+        <% end %>
       </div>
     </div>
   </div>

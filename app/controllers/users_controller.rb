@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.friendly.find(params[:id])
+    @boards = @user.boards.order(created_at: :desc)
   end
 
   private

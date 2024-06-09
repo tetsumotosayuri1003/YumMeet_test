@@ -11,4 +11,4 @@ Rails.application.config.assets.version = "1.0"
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-Rails.application.config.assets.precompile += %w( application.sass.scss )
+Rails.application.config.assets.precompile += %w( application.scss header.scss new.scss application.tailwind.scss )

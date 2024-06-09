@@ -14,7 +14,7 @@
         <h4 class="text-gray-900 font-bold text-lg mb-2 hover:text-indigo-600 inline-block">
           <%= link_to board.spot.name, board_path(board) %>
         </h4>
-        <fieldset class="rating_star">
+        <fieldset class="rating_star m-0 p-0 border-none float-left ">
           <span class="text-yellow-400">
             <%= display_rating_star(board.rating_star.to_i) %>
           </span>

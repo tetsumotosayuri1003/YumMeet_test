@@ -12,7 +12,7 @@ CarrierWave.configure do |config|
         region: 'ap-northeast-1',
         bucket: ENV["AWS_BUCKET"]
       }
-      config.fog_directory = 'YumMeet' if Rails.env.production?
+      config.fog_directory = ENV["AWS_BUCKET"] if Rails.env.production?
       config.fog_public = false
       config.fog_authenticated_url_expiration = 60
     end

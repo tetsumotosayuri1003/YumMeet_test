@@ -9,7 +9,8 @@ CarrierWave.configure do |config|
         provider: 'AWS',
         aws_access_key_id: ENV["AWS_ACCESS_KEY_ID"],
         aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
-        region: 'ap-northeast-1'
+        region: 'ap-northeast-1',
+        bucket: ENV["AWS_BUCKET"]
       }
       config.fog_directory = 'YumMeet' if Rails.env.production?
       config.fog_public = false
